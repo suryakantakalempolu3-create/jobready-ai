@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block public %}
+<div class="container">
+  <nav class="nav-pub"><a class="brand" href="/" style="padding:0"><span class="logo">J</span>JobReady AI</a>
+    <div class="row"><a class="btn btn-ghost" href="/login">Log in</a><a class="btn btn-primary" href="/register">Create free account</a></div></nav>
+  <section class="hero">
+    <div>
+      <h1>Walk into your first interview with a resume that passes the filters.</h1>
+      <p class="lead">Build an ATS-friendly resume, get it scored by AI, rehearse real interview questions one at a time, and see jobs that fit your skills.</p>
+      <div class="row mt"><a class="btn btn-primary" href="/register">Start building your resume</a><a class="btn btn-ghost" href="/login">I already have an account</a></div>
+      <p class="small muted mt">Demo account: demo@jobready.ai / Demo@1234</p>
+    </div>
+    <div class="hero-card">
+      <div class="row between"><b>Resume check</b><span class="badge ok">ATS-ready</span></div>
+      <div class="row mt" style="gap:22px"><div class="ring" style="--p:82"><div><div><b>82</b><br><span>of 100</span></div></div></div>
+        <div style="flex:1"><div class="small">Contact details</div><div class="bar"><i style="width:100%"></i></div>
+          <div class="small mt">Role keywords</div><div class="bar"><i style="width:70%"></i></div>
+          <div class="small mt">Action verbs &amp; impact</div><div class="bar"><i style="width:80%"></i></div></div></div>
+      <div class="chips mt"><span class="chip have">python</span><span class="chip have">flask</span><span class="chip miss">docker</span><span class="chip miss">pytest</span></div>
+    </div>
+  </section>
+  <section class="grid g3">
+    {% for ico,t,d in [('📝','Resume builder','Fill in education, skills, projects and certifications, then download a clean PDF.'),('📊','Resume analyzer','Upload a PDF and get an ATS score, missing skills and specific fixes.'),('📚','Interview prep','Technical and HR questions for Java, Python and more, with sample answers.'),('🎤','Mock interviews','Answer one question at a time and get scored feedback after each answer.'),('💼','Job matches','Openings ranked by how well your skills and degree fit.'),('📈','Progress dashboard','Track resume score, interview scores and skill gaps over time.')] %}
+    <div class="card feature"><div class="ico">{{ ico }}</div><div><h3>{{ t }}</h3><p class="muted small" style="margin:0">{{ d }}</p></div></div>{% endfor %}
+  </section>
+  <footer class="pub">JobReady AI · Built for students getting ready for their first job.</footer>
+</div>
+{% endblock %}

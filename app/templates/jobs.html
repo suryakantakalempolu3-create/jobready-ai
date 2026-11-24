@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% block content %}
+<div class="page-head"><h1>Job Matches</h1><p class="muted">Ranked by how well your skills, target role and degree fit. Add skills in <a href="/profile">My Profile</a> or the resume builder to improve matches.</p></div>
+<div class="card"><div class="grid3"><div class="field"><label for="q">Search</label><input id="q" placeholder="Title, company or skill"></div>
+<div class="field"><label for="type">Type</label><select id="type"><option value="">All</option><option>Full-time</option><option>Internship</option></select></div>
+<div class="field"><label for="loc">Location</label><input id="loc" placeholder="e.g. Pune, Remote"></div></div></div>
+<div class="grid g2 mt" id="list"></div>
+<p class="small muted mt">Listings are sample data for testing. “Apply” opens a live LinkedIn job search for that title.</p>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/jobs.js') }}"></script>{% endblock %}

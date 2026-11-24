@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% block public %}
+<div class="container"><nav class="nav-pub"><a class="brand" href="/" style="padding:0"><span class="logo">J</span>JobReady AI</a></nav>
+<form class="card auth fade" id="loginForm" novalidate>
+  <h1>Welcome back</h1><p class="muted">Log in to continue preparing.</p>
+  <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+  <div class="field"><label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" required></div>
+  <div id="formErr" class="small" style="color:var(--bad);min-height:1.2em" role="alert"></div>
+  <button class="btn btn-primary" style="width:100%">Log in</button>
+  <p class="small muted mt">New here? <a href="/register">Create an account</a> · Demo: demo@jobready.ai / Demo@1234</p>
+</form></div>{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/auth.js') }}"></script>{% endblock %}

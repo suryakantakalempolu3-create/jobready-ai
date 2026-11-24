@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="csrf-token" content="{{ csrf_token }}">
+<title>{% if title %}{{ title }} · {% endif %}JobReady AI</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%237c3aed'/><text x='50' y='68' font-size='56' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>J</text></svg>">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+{% if user %}
+<div class="topbar"><a class="brand" href="/dashboard" style="padding:0"><span class="logo">J</span>JobReady AI</a><button class="btn btn-ghost btn-sm" id="menuBtn" aria-label="Open menu">☰ Menu</button></div>
+<div class="shell">
+  <aside class="side" id="side">
+    <a class="brand" href="/dashboard"><span class="logo">J</span>JobReady AI</a>
+    {% for href,icon,label in [('dashboard','🏠','Dashboard'),('resume','📝','Resume Builder'),('analyzer','📊','Resume Analyzer'),('prep','📚','Interview Prep'),('mock','🎤','Mock Interview'),('jobs','💼','Job Matches'),('profile','👤','My Profile')] %}
+    <a class="nav {{ 'active' if active==href }}" href="/{{ href }}"><span>{{ icon }}</span>{{ label }}</a>{% endfor %}
+    <div class="grow"></div>
+    <div class="small muted" style="padding:0 10px">Signed in as<br><b style="color:var(--ink)">{{ user.name }}</b></div>
+    <span class="badge {{ 'ok' if ai_enabled else 'warn' }}" style="margin:6px 10px;width:fit-content">{{ 'AI online' if ai_enabled else 'Offline mode' }}</span>
+    <button class="btn btn-ghost btn-sm" id="logoutBtn" style="margin:4px 10px">Log out</button>
+  </aside>
+  <main class="main">{% block content %}{% endblock %}</main>
+</div>
+{% else %}
+{% block public %}{% endblock %}
+{% endif %}
+<div id="toasts" aria-live="polite"></div>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body></html>

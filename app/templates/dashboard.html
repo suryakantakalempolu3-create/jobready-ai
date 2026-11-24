@@ -1,0 +1,19 @@
+{% extends "base.html" %}{% block content %}
+<div class="page-head"><h1>Hi, <span id="uname">{{ user.name.split(' ')[0] }}</span> 👋</h1><p class="muted" id="subtitle">Here's how your job preparation is going.</p></div>
+<div class="grid g4 fade" id="stats">
+  <div class="card stat"><div class="muted small">Resume ATS score</div><div class="num" id="sScore">–</div><div class="small muted" id="sScoreSub">Not analyzed yet</div></div>
+  <div class="card stat"><div class="muted small">Resume completeness</div><div class="num" id="sComp">–</div><div class="bar mt"><i id="sCompBar" style="width:0"></i></div></div>
+  <div class="card stat"><div class="muted small">Interview average</div><div class="num" id="sIv">–</div><div class="small muted" id="sIvSub">No mock interviews yet</div></div>
+  <div class="card stat"><div class="muted small">Skill coverage</div><div class="num" id="sCov">–</div><div class="small muted" id="sCovSub"></div></div>
+</div>
+<div class="grid g2 mt">
+  <div class="card"><h3>Resume score history</h3><div id="scoreChart"></div></div>
+  <div class="card"><h3>Interview performance</h3><div id="ivChart"></div><div class="chips mt" id="ivTypes"></div></div>
+</div>
+<div class="grid g2 mt">
+  <div class="card"><div class="row between"><h3>Skills progress</h3><span class="badge blue" id="roleBadge"></span></div><p class="muted small">Skills employers look for in your target role. Update yours in <a href="/profile">My Profile</a>.</p><div id="skills" class="chips"></div></div>
+  <div class="card"><h3>Your next steps</h3><ul class="clean" id="steps"></ul></div>
+</div>
+<div class="card mt"><div class="row between"><h3>Career recommendations</h3><a href="/jobs">See all matches</a></div><div class="grid g2" id="jobs"></div></div>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>{% endblock %}

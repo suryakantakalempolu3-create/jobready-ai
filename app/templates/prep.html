@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% block content %}
+<div class="page-head"><h1>Interview Preparation</h1><p class="muted">Generate questions for your role and study the sample answers.</p></div>
+<div class="card"><div class="grid3"><div class="field"><label for="role">Job role</label><input id="role" list="roleList" value="Python Developer"><datalist id="roleList">{% for r in roles %}<option value="{{ r }}">{% endfor %}</datalist></div>
+<div class="field"><label for="type">Question type</label><select id="type"><option value="mixed">Technical + HR</option><option value="technical">Technical</option><option value="hr">HR / Behavioural</option></select></div>
+<div class="field"><label for="count">How many</label><select id="count"><option>5</option><option selected>8</option><option>10</option><option>15</option></select></div></div>
+<button class="btn btn-primary" id="genBtn">Generate questions</button> <span class="badge" id="src" hidden></span></div>
+<div id="out" class="mt"></div>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/prep.js') }}"></script>{% endblock %}

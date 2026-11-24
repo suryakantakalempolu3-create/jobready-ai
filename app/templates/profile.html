@@ -1,0 +1,13 @@
+{% extends "base.html" %}{% block content %}
+<div class="page-head"><h1>My Profile</h1><p class="muted">Your skills and target role power job matches and dashboard recommendations.</p></div>
+<form class="card" id="profileForm" style="max-width:760px" novalidate>
+  <div class="grid2"><div class="field"><label>Full name</label><input name="name" required maxlength="80"></div><div class="field"><label>Email</label><input name="email" disabled></div>
+  <div class="field"><label>Phone</label><input name="phone"></div><div class="field"><label>Location</label><input name="location"></div>
+  <div class="field"><label>College</label><input name="college"></div><div class="field"><label>Degree</label><input name="degree" placeholder="B.Tech Computer Science"></div></div>
+  <div class="field"><label>Target role</label><select name="target_role">{% for r in roles %}<option>{{ r }}</option>{% endfor %}</select></div>
+  <div class="field"><label>Headline</label><input name="headline" maxlength="120"></div>
+  <div class="field"><label>Skills (comma-separated)</label><textarea name="skills" rows="2" placeholder="Python, Flask, SQL"></textarea></div>
+  <button class="btn btn-primary">Save profile</button>
+</form>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/profile.js') }}"></script>{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% block content %}
+<div class="page-head"><h1>Resume Analyzer</h1><p class="muted">Upload a text-based PDF to get an ATS compatibility score and a list of fixes.</p></div>
+<div class="card"><div class="grid2"><div class="field"><label for="role">Role you're applying for</label><select id="role">{% for r in roles %}<option>{{ r }}</option>{% endfor %}</select></div>
+<div class="field"><label>&nbsp;</label><div class="row"><button class="btn btn-primary" id="goBtn" disabled>Analyze resume</button></div></div></div>
+<label class="drop" id="drop" for="file" style="display:block"><div style="font-size:2rem">📄</div><b id="fileName">Drop your PDF here or click to browse</b><div class="small muted">PDF only · max 5 MB</div><input id="file" type="file" accept="application/pdf,.pdf" hidden></label></div>
+<div id="result" class="mt"></div>
+<div class="card mt"><h3>Previous analyses</h3><div id="history"></div></div>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/analyzer.js') }}"></script>{% endblock %}

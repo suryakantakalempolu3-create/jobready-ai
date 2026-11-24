@@ -1,0 +1,17 @@
+{% extends "base.html" %}{% block content %}
+<div class="page-head"><h1>Mock Interview</h1><p class="muted">Answer one question at a time. You'll get a score and feedback after each answer.</p></div>
+<div class="card" id="setup"><div class="grid3"><div class="field"><label for="role">Job role</label><input id="role" list="roleList" value="Python Developer"><datalist id="roleList">{% for r in roles %}<option value="{{ r }}">{% endfor %}</datalist></div>
+<div class="field"><label for="type">Question type</label><select id="type"><option value="mixed">Technical + HR</option><option value="technical">Technical</option><option value="hr">HR / Behavioural</option></select></div>
+<div class="field"><label for="count">Questions</label><select id="count"><option>3</option><option selected>5</option><option>8</option><option>10</option></select></div></div>
+<button class="btn btn-primary" id="startBtn">Start interview</button></div>
+<div id="session" hidden>
+  <div class="row between"><b id="progressTxt"></b><span class="badge" id="roleTxt"></span></div><div class="bar mt"><i id="progressBar" style="width:0"></i></div>
+  <div class="card qcard mt"><div class="muted small">Question</div><h2 id="qText"></h2>
+    <div class="field mt"><label for="answer">Your answer</label><textarea id="answer" rows="6" maxlength="4000" placeholder="Type your answer as you would say it in the interview…"></textarea></div>
+    <button class="btn btn-primary" id="submitBtn">Submit answer</button></div>
+  <div id="feedback" class="mt"></div>
+</div>
+<div id="finalBox" class="mt" hidden></div>
+<div class="card mt"><h3>Past interviews</h3><div id="history"></div></div>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/mock.js') }}"></script>{% endblock %}
