@@ -1,2 +1,18 @@
+[project]
+name = "jobready-ai"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+  "Flask>=3.0",
+  "Flask-SQLAlchemy>=3.1",
+  "SQLAlchemy>=2.0",
+  "PyMySQL>=1.1",
+  "cryptography>=42.0",
+  "python-dotenv>=1.0",
+  "anthropic>=0.40",
+  "pypdf>=4.0",
+  "reportlab>=4.0",
+]
+
 [tool.vercel]
 entrypoint = "run:app"
